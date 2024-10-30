@@ -1,12 +1,12 @@
 # hello.c
-    Print ``hello, world`` to the terminal.
+Print ``hello, world`` to the terminal.
 
 ## Table of Contents
 - [About](#about)
 - [Getting Started](#getting-started)
 
 ## About
-    Demonstration of simple c program that output "hello, world" to a terminal.
+Demonstration of simple c program that output "hello, world" to a terminal.
 
 ## Getting Started
 ### Prerequisites

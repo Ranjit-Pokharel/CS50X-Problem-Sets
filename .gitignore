@@ -1,1 +1,6 @@
 venv/
+psets*/*/*
+
+!psets*/*/*.c
+!psets*/*/*.md
+

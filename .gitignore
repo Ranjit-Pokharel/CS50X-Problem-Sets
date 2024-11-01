@@ -1,5 +1,6 @@
 venv/
 psets*/*/*
+.vscode/
 
 !psets*/*/*.c
 !psets*/*/*.md

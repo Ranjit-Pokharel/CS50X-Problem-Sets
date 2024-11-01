@@ -25,7 +25,6 @@ To compile and run this program, you’ll need:
    output ``right aligned pyramid of height``
 
 ### Example
-    ```
     $ ./mario
     Height: 8
            #
@@ -36,5 +35,3 @@ To compile and run this program, you’ll need:
       ######
      #######
     ########
-    
-    ```

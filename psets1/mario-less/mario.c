@@ -44,7 +44,7 @@ void draw_pyramid(int height)
  * height: int. height of the pyramid.
  * row_level: int. The row that is to be printed
  * 
- * returns: function is return if the height is less then the low_level as row cannot be grater 
+ * returns: function is return if the height is less then the low_level as row cannot be greater 
  *          then the given height.
  */
 void row_print(int height, int row_level)

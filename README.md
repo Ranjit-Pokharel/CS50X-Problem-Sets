@@ -17,7 +17,7 @@ CS50’s Introduction to Computer Science Problem Sets Solutions.
 
 ## Getting Started
 ### Prerequisites
-To compile and run this program, you’ll need:
+To compile and run this program, you'll need:
 - A C compiler, such as GCC or Clang.
 - [cs50 c library](https://cs50.readthedocs.io/libraries/cs50/c/)
 - python3

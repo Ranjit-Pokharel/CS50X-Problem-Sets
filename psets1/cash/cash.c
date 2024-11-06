@@ -1,6 +1,6 @@
 /*
  * File: cash.c
- * Description: 
+ * Description:Gives the total numbers of coins to give for a given change. 
  */
 #include <cs50.h>
 #include <stdio.h>
@@ -26,6 +26,8 @@ typedef struct
 /*
  * Function: main
  * --------------
+ * get the change from user and display the total 
+ * coin to be given
  * 
  * return: 0
  */

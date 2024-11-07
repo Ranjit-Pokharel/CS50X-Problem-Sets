@@ -1,7 +1,12 @@
 /**
- * \file caeser.c
+ * \file substitution.c
  * \brief
- * encrypt the given text with key which is provide as cli argument
+ * encrypt a message by replacing every letter with another letter.
+ * provided key: in this case, a mapping of each of the letters of the alphabet 
+ * to the letter it should correspond to when we encrypt it. 
+ * To “decrypt” the message, the receiver of the message would need to know the key, 
+ * so that they can reverse the process: translating the encrypt text back into 
+ * the original message
  */
 
 #include <cs50.h>
@@ -10,8 +15,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-bool is_digit(char *strings);
-char *cipher(char *plaintext, const int key);
+bool is_valid_key(char *key);
+char *cipher(char *plaintext, const char *key);
 
 /**
  * \brief
@@ -31,18 +36,18 @@ int main(int argc, char *argv[])
     // if user doesn't give proper cli argument 
     if (argc != 2)
     {
-        printf("Usage: ./caesar key\n");
+        printf("Usage: ./substitution key\n");
         return 1;
     }
-    // if the given key by user is not numeric
-    if (!is_digit(argv[1]))
+
+    // if given key is not valid
+    if (!is_valid_key(argv[1]))
     {
-        printf("Usage: ./caesar key\n");
+        printf("Key must contain 26 characters.\n");
         return 1;        
     }
 
-    // converting string to int
-    const int KEY = atoi(argv[1]);
+    const char *KEY = argv[1];
 
     char *text = get_string("plaintext: ");
 
@@ -67,14 +72,9 @@ int main(int argc, char *argv[])
  * 
  * \return char *ciphertext string of encrypted text || NULL if memory allocation fail.
  */
-char *cipher(char *plaintext, const int key)
+char *cipher(char *plaintext, const char *key)
 {
     int length = strlen(plaintext);
-    int wraptext = 0;
-    // there are 26 char in english alphabet
-    int alphabet_range = 26;
-    // the starting of english alphabet is A;
-    int starting_alphabet = 'A';
 
     char *ciphertext = malloc(sizeof(char) * length + 1);
     if (!ciphertext)
@@ -83,61 +83,69 @@ char *cipher(char *plaintext, const int key)
     }
     ciphertext[-1] = '\0';
 
+    int position = 0;
+    int starting_alphabet = 'A';
+
     for (int i = 0; i < length; i++)
     {
-        // if the char of string is alpha then only modify and add to ciphertext
+        // check if the given char of the plainte
         if (isalpha(plaintext[i]))
         {
-            // wrap formula wrap = S + ((O + K - S) % range)
-            // where:
-            // S = starting char or number of the range (A to Z)
-            // O = the char of the given string of text
-            // K = secerate key
-            // range = total length of the range (A - Z) that is 26
-            wraptext = starting_alphabet + 
-                       ((toupper(plaintext[i]) + key - starting_alphabet) % alphabet_range);
+            position = toupper(plaintext[i]) - starting_alphabet;
 
             if (isupper(plaintext[i]))
             {
-                // if the char of string is upper chyper as upper
-                ciphertext[i] = toupper((char) wraptext);
+                ciphertext[i] = toupper(key[position]);
             }
             else
             {
-                // if char of string is lower chyper as lower
-                ciphertext[i] = tolower((char) wraptext);
-            }
+                ciphertext[i] = tolower(key[position]);
+            }   
         }
-        // if char of string is not alphabet just add as it is
         else
         {
             ciphertext[i] = plaintext[i];
         }
     }
-
     return ciphertext;
 }
 
 /**
  * \brief 
- * check if the given string is a digit or not
- * (alpha-numeric)
+ * check if the given key is of length 26 or
+ * no duplication or if its only alphabet 
+ * (not numeric)
  * 
- * \param strings the string which might be numeric.
+ * \param strings the key to be checked if its valid or not.
  * 
  * \return
- * True if its a digit || False if not a digit
+ * True if its valid || False if not
  */
-bool is_digit(char *strings)
+bool is_valid_key(char *key)
 {
-    int length = strlen(strings);
+    int length = strlen(key);
+    // if length is not 26 (A to Z) not valid
+    if (length != 26)
+    {
+        return false;
+    }
 
     for (int i = 0; i < length; i++)
     {
-        // if tha given numeric string is not a number
-        if (!isdigit(strings[i]))
+        // if the given char is not alphabet not valid
+        if (!isalpha(key[i]))
         {
             return false;
+        }
+
+        // checking for duplicate
+        // check the char I for every char j in that string till it hits length
+        for (int j = i + 1; j < length; j++)
+        {
+            if (key[i] == key[j])
+            {
+                return false;
+            }
         }
     }
     return true;

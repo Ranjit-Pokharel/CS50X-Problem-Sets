@@ -1,16 +1,18 @@
-/*
- * File: hello.c
- * Description: Print hello world to terminal
+/**
+ * \file hello.c
+ * \brief
+ * Print hello world to terminal
  */
 
 #include <stdio.h>
 
-/*
- * Function: main
- * --------------
+/**
+ * \brief
  * print hello world 
  *
- * return: 0
+ * \param void
+ * 
+ * \returns 0
  */
 int main(void)
 {

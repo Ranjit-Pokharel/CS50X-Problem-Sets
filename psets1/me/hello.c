@@ -1,17 +1,19 @@
-/*
- * File: hello.c
- * Description: Greet user with hello, <name>
+/**
+ * \file hello.c
+ * \brief
+ * Greet user with hello, <name>
  */
 
 #include <cs50.h>
 #include <stdio.h>
 
-/*
- * Function: main
- * --------------
+/**
+ * \brief
  * greet user name with hello, <name>.
  *  
- * return: 0
+ * \param void
+ * 
+ * \return 0
  */
 int main(void)
 {

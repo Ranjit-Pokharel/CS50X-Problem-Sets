@@ -1,7 +1,8 @@
-/*
- * File: credit.c
- * Description: check if the credit card is invalid or valid 
- *              (if valid display the name of credit card)
+/**
+ * \file credit.c
+ * \brief 
+ * check if the credit card is invalid or valid 
+ * (if valid display the name of credit card)
  * 
  * Algorithm: Luhn’s Algorithm
  */
@@ -15,27 +16,28 @@ int get_length(long card);
 bool validating_checksum(long card);
 int get_starting_num(long card);
 
-/*
- * Function: main
- * --------------
+/**
+ * \brief
  * take user's credit card number and display invalid or name of credit card if valid
  * 
- * return: 0
+ * \param void
+ * 
+ * \return 0
  */
 int main(void)
 {
     long card = get_card("Number: ");
     printf("%s", check(card));
+    return 0;
 }
 
-/*
- * Function: get_card
- * ------------------
+/**
+ * \brief
  * get credit card number from user that is non zero and non negative
  * 
- * prompt: char*. msg to be display to user to ask for number
+ * \param prompt (char*): msg to be display to user to ask for number
  * 
- * return: long. credit card number which need to be check for valid or invalid
+ * \return n (long): credit card number which need to be check for valid or invalid
  */
 long get_card(char *prompt)
 {
@@ -49,14 +51,13 @@ long get_card(char *prompt)
     return n;
 }
 
-/*
- * Function: check
- * ---------------
+/**
+ * \brief
  * check if credit card number is invalid or valid and gives name.
  * 
- * card: long. credit card number
+ * \param card (long): credit card number
  * 
- * return: char*. invalid (if card is invalid) and name of card if valid
+ * \return (char*): invalid (if card is invalid) and name of card if valid
  */
 char *check(long card)
 {
@@ -79,14 +80,17 @@ char *check(long card)
     }  
 }
 
-/*
- * Function: isvald
- * ----------------
+/**
+ * \brief
  * check if card is valid or not.
  * 
- * card: long. credit card number to be check
+ * \param card (long): credit card number to be check
  * 
- * return: int. 1 for amex, 2 for mastercard, 3 for visa. 0 for invalid card
+ * \return An integer indicating the type of card
+ * \retval 1 for amex
+ * \retval 2 for mastercard
+ * \retval 3 for visa. 
+ * \retval 0 for invalid card
  */
 int isvalid(long card)
 {
@@ -122,14 +126,13 @@ int isvalid(long card)
     return 0;
 }
 
-/*
- * Function: get_length
- * --------------------
+/**
+ * \brief
  * get the length of a long number 
  * 
- * card: long. long number whose length is to be calculated
+ * \param card (long): long number whose length is to be calculated
  * 
- * return: int. length of the number
+ * \return length (int): length of the number
  */
 int get_length(long card)
 {
@@ -145,14 +148,13 @@ int get_length(long card)
     return length;
 }
 
-/*
- * Function: get_starting_num
- * --------------------------
+/**
+ * \brief
  * get the starting 2 number from a long number
  * 
- * card: long. whose starting number to be extracted
+ * \param card (long): whose starting number to be extracted
  * 
- * return: int. extracted starting 2 number
+ * \return (int): extracted starting 2 number
  */
 int get_starting_num(long card)
 {
@@ -166,16 +168,15 @@ int get_starting_num(long card)
     return (int) card;
 }
 
-/*
- * Function: validating_checksum
- * -----------------------------
+/**
+ * \brief
  * using the Luhn’s Algorithm to check if the card number is valid or not
  * 
  * Algorithm: Luhn’s Algorithm
  * 
- * card: long. credit card number
+ * \param card (long): credit card number
  * 
- * return: bool. true if Luhn’s Algorithm is valid else false
+ * \return (bool): true if Luhn’s Algorithm is valid else false
  */
 bool validating_checksum(long card)
 {

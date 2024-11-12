@@ -1,35 +1,36 @@
-/*
- * File: cash.c
- * Description:Gives the total numbers of coins to give for a given change. 
+/**
+ * \file: cash.c
+ * \brief
+ * Gives the total numbers of coins to give for a given change. 
  */
 #include <cs50.h>
 #include <stdio.h>
 
-int coin_dispensing(int change_own);
-int get_change(char *prompt);
-
-/*
- * Type: coin
- * ----------
+/**
+ * \typedef coins
+ * \brief
  * Represents a coin with amount and total_coins fields.
- *
  * This structure holds information about a coin's amount and the total
  * number of coins. It is intended to be used wherever a simple 
  * integer-based representation of a coin's value and total quantity is needed.
  */
-typedef struct 
+typedef struct
 {
-    int amount;
-    int total_coins;
+    int amount;      /**amount of the coin */
+    int total_coins; /**total number of coins */
 } coins;
 
-/*
- * Function: main
- * --------------
+int coin_dispensing(int change_own);
+int get_change(char *prompt);
+
+/**
+ * \brief
  * get the change from user and display the total 
  * coin to be given
  * 
- * return: 0
+ * \param void
+ * 
+ * \return 0
  */
 int main(void)
 {
@@ -39,14 +40,13 @@ int main(void)
     return 0;
 }
 
-/*
- * Function: get_change
- * --------------------
+/**
+ * \brief
  * get a valid change non negative amount from user.
  * 
- * prompt: char*. text to be dispay to ask for change.
+ * \param prompt (char*): text to be dispay to ask for change.
  * 
- * rerurn: int. the valid amount
+ * \return n (int): the valid amount
  */
 int get_change(char *prompt)
 {
@@ -60,16 +60,14 @@ int get_change(char *prompt)
     return n;
 }
 
-/*
- * Function: coin_dispensing
- * -------------------------
+/**
+ * \brief
  * calculate total coins to be given to customers.
- * 
  * Algorithms: Greedy algorithm.
  * 
- * change_own: int. change that is to be return to the customer
+ * \param change_own (int): change that is to be return to the customer
  * 
- * return: int. total coins to be given to customers
+ * \return total (int): total coins to be given to customers
  */
 int coin_dispensing(int change_own)
 {
